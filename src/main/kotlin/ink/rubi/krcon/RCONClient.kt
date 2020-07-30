@@ -15,7 +15,7 @@ import java.net.InetSocketAddress
 import java.nio.ByteOrder
 import kotlin.coroutines.CoroutineContext
 
-class RCONClient(private val config: RCONClientConfig = RCONClientConfig()) : CoroutineScope {
+class RCONClient(val config: RCONClientConfig = RCONClientConfig()) : CoroutineScope {
     private val log = LoggerFactory.getLogger("[RCON Client]")
     private val idGenerator = AtomicIntIdGenerator()
     private lateinit var socket: Socket

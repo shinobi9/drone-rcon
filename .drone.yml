@@ -1,0 +1,33 @@
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
+    - master
+  event:
+    - push
+
+steps:
+  - name: build
+    image: gradle:5.6.4
+    pull: if-not-exists
+    commands:
+      - gradle build
+
+  - name: docker
+    image: plugins/docker
+    pull: if-not-exists
+    settings:
+      repo: 172.16.101.172:5500/9rubi/drone-rcon
+      registry: 172.16.101.172:5500
+      tags: 0.0.1
+      insecure: true
+
+  - name: test
+    image: 172.16.101.172:5500/9rubi/drone-rcon:0.0.1
+    settings:
+      RCON_HOST: 192.168.0.102
+      RCON_PORT: 28016
+      RCON_PASSWORD: shinobi9
+      RCON_COMMANDS: say hi

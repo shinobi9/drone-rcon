@@ -10,20 +10,19 @@ data class RCONClientConfig(
     var args: List<String> = listOf(),
 ) {
     init {
-//        resolvePropertiesFromEnvironmentVariables()
-        resolvePropertiesFromProgramArguments()
+        resolvePropertiesFromEnvironmentVariables()
+//        resolvePropertiesFromProgramArguments()
     }
 
     private fun resolvePropertiesFromEnvironmentVariables() {
-        //
-        TODO()
-    }
-
-    private fun resolvePropertiesFromProgramArguments() {
         getenv("RCON_HOST")?.let { host = it }
         getenv("RCON_PORT")?.toIntOrNull()?.let { port = it }
         getenv("RCON_TIMEOUT")?.toLongOrNull()?.let { socketTimeout = it }
         getenv("RCON_PASSWORD")?.let { password = it }
+    }
+
+    private fun resolvePropertiesFromProgramArguments() {
+        //todo
     }
 
 }
