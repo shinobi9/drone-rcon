@@ -1,4 +1,4 @@
-import ink.rubi.krcon.RCONClient
+import shinobi9.krcon.RCONClient
 import kotlinx.coroutines.runBlocking
 
 object CommandLine {

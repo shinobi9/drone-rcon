@@ -1,4 +1,4 @@
-package ink.rubi.krcon.protocol
+package shinobi9.krcon.protocol
 
 import java.nio.charset.Charset
 

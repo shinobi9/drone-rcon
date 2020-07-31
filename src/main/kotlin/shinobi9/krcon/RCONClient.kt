@@ -1,8 +1,8 @@
-package ink.rubi.krcon
+package shinobi9.krcon
 
-import ink.rubi.krcon.protocol.AtomicIntIdGenerator
-import ink.rubi.krcon.protocol.RCONPacket
-import ink.rubi.krcon.protocol.RCONPacket.PacketType.*
+import shinobi9.krcon.protocol.AtomicIntIdGenerator
+import shinobi9.krcon.protocol.RCONPacket
+import shinobi9.krcon.protocol.RCONPacket.PacketType.*
 import io.ktor.network.selector.*
 import io.ktor.network.sockets.*
 import io.ktor.util.*

@@ -1,4 +1,4 @@
-package ink.rubi.krcon
+package shinobi9.krcon
 
 import kotlinx.coroutines.runBlocking
 

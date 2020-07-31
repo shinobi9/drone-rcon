@@ -50,13 +50,13 @@ steps:
     image: plugins/docker
     pull: if-not-exists
     settings:
-      repo: 172.16.101.172:5500/9rubi/drone-rcon
+      repo: 172.16.101.172:5500/shinobi9/drone-rcon
       registry: 172.16.101.172:5500
       tags: 0.0.1
       insecure: true
 
   - name: test
-    image: 172.16.101.172:5500/9rubi/drone-rcon:0.0.1
+    image: 172.16.101.172:5500/shinobi9/drone-rcon:0.0.1
     pull: always
     settings:
       host:
@@ -73,7 +73,7 @@ steps:
     image: plugins/docker
     pull: if-not-exists
     settings:
-      repo: 9rubi/drone-krcon
+      repo: shinobi9/drone-rcon
       tags: latest
       username:
         from_secret: DOCKER_USERNAME

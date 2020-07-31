@@ -4,7 +4,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "5.0.0"
 }
 
-group = "ink.rubi"
+group = "shinobi9"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -23,12 +23,12 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
 
-application.mainClassName = "ink.rubi.krcon.DroneMain"
+application.mainClassName = "shinobi9.krcon.DroneMain"
 
 tasks.shadowJar {
-    baseName = "krcon"
-    version = ""
-    classifier = ""
+    archiveBaseName.set("krcon")
+    archiveVersion.set("")
+    archiveClassifier.set("")
 }
 
 tasks {
