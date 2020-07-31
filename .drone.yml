@@ -68,6 +68,7 @@ steps:
       commands:
       - "say hi"
       - "say how are you?"
+
   - name: publish
     image: plugins/docker
     pull: if-not-exists
