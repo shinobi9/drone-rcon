@@ -8,12 +8,43 @@ trigger:
   event:
     - push
 
+volumes:
+  - name: krcon
+    host:
+      path: /tmp/cache
+
 steps:
+  - name: restore-cache
+    image: drillster/drone-volume-cache
+    pull: if-not-exists
+    settings:
+      restore: true
+      mount:
+        - ./gradle_user_home
+    volumes:
+    - name: krcon
+      path: /cache
+
   - name: build
     image: gradle:5.6.4
     pull: if-not-exists
     commands:
-      - gradle build
+      - gradle shadowJar -i -g ./gradle_user_home
+
+  - name: rebuild-cache
+    image: drillster/drone-volume-cache
+    pull: if-not-exists
+    settings:
+      rebuild: true
+      mount:
+        - ./gradle_user_home
+    volumes:
+      - name: krcon
+        path: /cache
+    when:
+      status:
+        - failure
+        - success
 
   - name: docker
     image: plugins/docker
@@ -26,8 +57,11 @@ steps:
 
   - name: test
     image: 172.16.101.172:5500/9rubi/drone-rcon:0.0.1
+    pull: always
     settings:
-      RCON_HOST: 192.168.0.102
-      RCON_PORT: 28016
-      RCON_PASSWORD: shinobi9
-      RCON_COMMANDS: say hi
+      host: "cn-zj-dx-2.sakurafrp.com"
+      port: "13207"
+      password: "shinobi9"
+      commands:
+      - "say hi"
+      - "say how are you?"

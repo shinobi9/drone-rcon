@@ -26,7 +26,7 @@ dependencies {
 application.mainClassName = "ink.rubi.krcon.DroneMain"
 
 tasks.shadowJar {
-    baseName = "kcron"
+    baseName = "krcon"
     version = ""
     classifier = ""
 }

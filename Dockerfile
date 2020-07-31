@@ -1,7 +1,5 @@
-FROM openjdk:8-jre-apline
+FROM hub.c.163.com/library/openjdk:8-jre-alpine
 
-COPY build/libs/kcron.jar /app/kcron.jar
+COPY build/libs/krcon.jar /app/krcon.jar
 
-WORKDIR /app
-
-CMD ["java","-jar","./kcron.jar"]
+CMD ["java","-jar","/app/krcon.jar"]
