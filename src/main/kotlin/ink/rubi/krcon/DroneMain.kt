@@ -10,7 +10,7 @@ object DroneMain {
         if (client.config.password.isNotEmpty()) {
             client.login()
         }
-        client.config.commands!!.split(",").forEach { client.sendCommand(it) }
+        client.config.commands.split(",").forEach { client.sendCommand(it) }
         client.closeSocketAndSuicide()
     }
 }

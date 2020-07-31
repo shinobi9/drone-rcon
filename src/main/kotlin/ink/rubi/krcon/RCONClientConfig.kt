@@ -8,13 +8,20 @@ data class RCONClientConfig(
     var socketTimeout: Long = 30_000,
     var password: String = "",
     var args: List<String> = listOf(),
-    var commands: String? = null
+    var commands: String = ""
 ) {
     init {
 //        resolvePropertiesFromEnvironmentVariables()
 //        resolvePropertiesFromProgramArguments()
         resolvePropertiesFromDronePluginSettings()
+//        resolveOtherEnvironmentVariablesInject()
+        validate()
     }
+
+    private fun validate() {
+        require(commands.isNotEmpty()) { "commands is empty" }
+    }
+
 
     private fun resolvePropertiesFromEnvironmentVariables() {
         getenv("RCON_HOST")?.let { host = it }
@@ -22,10 +29,6 @@ data class RCONClientConfig(
         getenv("RCON_TIMEOUT")?.toLongOrNull()?.let { socketTimeout = it }
         getenv("RCON_PASSWORD")?.let { password = it }
         getenv("RCON_COMMANDS")?.let { commands = it }
-    }
-
-    private fun resolvePropertiesFromProgramArguments() {
-//todo
     }
 
     private fun resolvePropertiesFromDronePluginSettings() {

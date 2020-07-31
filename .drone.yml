@@ -46,7 +46,7 @@ steps:
         - failure
         - success
 
-  - name: docker
+  - name: local docker
     image: plugins/docker
     pull: if-not-exists
     settings:
@@ -59,9 +59,22 @@ steps:
     image: 172.16.101.172:5500/9rubi/drone-rcon:0.0.1
     pull: always
     settings:
-      host: "cn-zj-dx-2.sakurafrp.com"
-      port: "13207"
-      password: "shinobi9"
+      host:
+        from_secret: RCON_HOST
+      port:
+        from_secret: RCON_PORT
+      password:
+        from_secret: RCON_PASSWORD
       commands:
       - "say hi"
       - "say how are you?"
+  - name: publish
+    image: plugins/docker
+    pull: if-not-exists
+    settings:
+      repo: 9rubi/drone-krcon
+      tags: latest
+      username:
+        from_secret: DOCKER_USERNAME
+      password:
+        from_secret: DOCKER_PASSWORD
