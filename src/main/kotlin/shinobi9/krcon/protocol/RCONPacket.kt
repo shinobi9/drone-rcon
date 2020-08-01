@@ -9,7 +9,7 @@ import java.nio.charset.Charset
  *  |    Field      |        Type                            |       Value       |
  *  |---------------|----------------------------------------|-------------------|
  *  |    Size       |  32-bit little-endian Signed Integer   | Varies, see below.|
- *  |     ID        |  32-bit little-endian Signed Integer	 | Varies, see below.|
+ *  |     ID        |  32-bit little-endian Signed Integer   | Varies, see below.|
  *  |    Type       |  32-bit little-endian Signed Integer   | Varies, see below.|
  *  |    Body       |     Null-terminated ASCII String       | Varies, see below.|
  *  |  Empty String |     Null-terminated ASCII String       |      0x00         |
